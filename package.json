@@ -4,13 +4,43 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "lint:script": "eslint --ext .ts,vue --ignore-path .gitignore .",
+    "lint:style": "stylelint src/**/*.{css,scss,vue}",
+    "prepare": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,vue}": "eslint: --fix",
+    "*.{css,scss,vue}": "stylelint --fix",
+    "*": "prettier -w -u"
   },
   "dependencies": {
-    "vue": "^3.2.16"
+    "vue": "^3.2.16",
+    "vue-router": "^4.0.12"
   },
   "devDependencies": {
+    "@types/node": "^16.11.7",
+    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/parser": "^5.3.1",
     "@vitejs/plugin-vue": "^1.9.3",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^9.0.1",
+    "eslint": "^8.2.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "husky": "^7.0.0",
+    "lint-staged": "^12.0.1",
+    "postcss": "^8.3.11",
+    "prettier": "^2.4.1",
+    "stylelint": "^14.0.1",
+    "stylelint-config-standard": "^23.0.0",
+    "tailwindcss": "^2.2.19",
     "typescript": "^4.4.3",
     "vite": "^2.6.4",
     "vue-tsc": "^0.3.0"
