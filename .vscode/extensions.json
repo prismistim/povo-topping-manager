@@ -4,6 +4,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "wayou.vscode-todo-highlight",
-    "github.vscode-pull-request-github"
+    "github.vscode-pull-request-github",
+    "bradlc.vscode-tailwindcss"
   ]
 }
