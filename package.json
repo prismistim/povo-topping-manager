@@ -9,15 +9,10 @@
     "lint:style": "stylelint src/**/*.{css,scss,vue}",
     "prepare": "husky install"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
-    "*.{ts,vue}": "eslint: --fix",
-    "*.{css,scss,vue}": "stylelint --fix",
-    "*": "prettier -w -u"
+    "*.{ts,vue}": "npx eslint . --fix",
+    "*.{css,scss,vue}": "npx stylelint --fix",
+    "*": "npx prettier -w -u"
   },
   "dependencies": {
     "vue": "^3.2.16",
