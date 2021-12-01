@@ -11,7 +11,6 @@
   },
   "lint-staged": {
     "*.{ts,vue}": "npx eslint . --fix",
-    "*.{css,scss,vue}": "npx stylelint --fix",
     "*": "npx prettier -w -u"
   },
   "dependencies": {

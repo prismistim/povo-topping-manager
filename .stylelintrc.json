@@ -1,6 +1,7 @@
 {
-  "extends": [
-    "stylelint-config-recommended",
-    "stylelint-config-standard"
-  ]
+  "extends": ["stylelint-config-recommended", "stylelint-config-standard"],
+  "rules": {
+    "at-rule-no-unknown": false,
+    "no-empty-source": null
+  }
 }

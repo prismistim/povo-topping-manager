@@ -2,7 +2,8 @@
   "env": {
     "browser": true,
     "es2021": true,
-    "node": true
+    "node": true,
+    "vue/setup-compiler-macros": true
   },
   "extends": [
     "eslint:recommended",
@@ -18,5 +19,6 @@
   "plugins": ["vue", "@typescript-eslint"],
   "rules": {
     "indent": ["error", 2]
-  }
+  },
+  "ignorePatterns": ["**/dist/**/*.js"]
 }
