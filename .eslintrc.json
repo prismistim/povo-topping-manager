@@ -20,5 +20,5 @@
   "rules": {
     "indent": ["error", 2]
   },
-  "ignorePatterns": ["**/dist/**/*.js"]
+  "ignorePatterns": ["**/dist/**/*.js", "**/node_modules/"]
 }
