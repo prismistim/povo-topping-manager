@@ -5,7 +5,7 @@
     "dev": "vite",
     "prebuild": "rimraf ./node_modules/@types/react",
     "build": "vue-tsc --noEmit && vite build",
-    "build:prod": "vue-tsc --noEmit && vite build --base=/povo-topping-manager/",
+    "build:prod": "vue-tsc --noEmit && vite build --base=./",
     "serve": "vite preview",
     "lint:script": "eslint --ext .ts,vue --ignore-path .gitignore .",
     "lint:style": "stylelint src/**/*.{css,scss,vue}",
