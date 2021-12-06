@@ -2,7 +2,7 @@
   "name": "povo-topping-manager",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "prebuild": "rimraf ./node_modules/@types/react",
     "build": "vue-tsc --noEmit && vite build",
     "build:prod": "vue-tsc --noEmit && vite build --base=./",
