@@ -9,7 +9,7 @@ RUN apk update && \
 RUN mkdir /app/node_modules && \
   chown -R node:node /app/node_modules
 
-COPY --chown=node:node package*.json /app
+COPY --chown=node:node package*.json /app/
 
 RUN cd /app && \
   npm install -g npm && \
