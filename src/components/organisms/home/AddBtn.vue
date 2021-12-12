@@ -1,9 +1,7 @@
-<script setup lang="ts"></script>
-
 <template>
   <div class="text-center my-10">
     <button
-      class="w-40 h-40 bg-yellow-300 text-lg rounded-full hover:bg-yellow-400 shadow-md font-mono"
+      class="w-40 h-40 bg-povo hover:bg-yellow-100 text-lg rounded-full shadow-md font-mono"
     >
       新規登録
     </button>

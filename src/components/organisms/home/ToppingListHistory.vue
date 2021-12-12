@@ -1,7 +1,11 @@
 <script setup lang="ts">
-const props = defineProps({
-  toppingName: String,
-  purchasedDate: Date
+interface Props {
+  toppingName?: string
+  purchasedDate?: string
+}
+const props = withDefaults(defineProps<Props>(), {
+  toppingName: 'fuga',
+  purchasedDate: '2021-12-12'
 })
 </script>
 
@@ -13,14 +17,14 @@ const props = defineProps({
         <a
           href="#"
           class="block px-4 py-4 my-4 shadow border-l-4 border-yellow-300"
-          >HRとは</a
+          >{{ props.toppingName }}</a
         >
       </li>
       <li>
         <a
           href="#"
           class="block px-4 py-4 my-4 shadow border-l-4 border-yellow-300"
-          >HRとは</a
+          >{{ props.toppingName }}</a
         >
       </li>
     </ul>
