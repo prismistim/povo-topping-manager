@@ -12,7 +12,8 @@
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006 --no-open",
     "build-storybook": "build-storybook",
-    "test": "jest"
+    "test": "jest",
+    "cy": "cypress run"
   },
   "lint-staged": {
     "*.{ts,vue}": "npx eslint . --fix",
@@ -24,6 +25,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
+    "@cypress/vite-dev-server": "^2.2.1",
+    "@cypress/vue": "^3.0.5",
     "@storybook/addon-actions": "^6.5.0-alpha.1",
     "@storybook/addon-essentials": "^6.5.0-alpha.1",
     "@storybook/addon-links": "^6.5.0-alpha.1",
@@ -40,6 +43,7 @@
     "@vue/vue3-jest": "^27.0.0-alpha.4",
     "autoprefixer": "^10.4.0",
     "babel-loader": "^8.2.3",
+    "cypress": "^9.1.1",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-prettier-vue": "^1.0.0",
