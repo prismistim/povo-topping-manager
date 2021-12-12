@@ -2,9 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "/@/*": [
-        "src/*"
-      ]
+      "/@/*": ["src/*"]
     },
     "target": "esnext",
     "module": "esnext",
@@ -14,21 +12,15 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": [
-      "esnext",
-      "dom"
-    ],
-    "types": [
-      "vite/client"
-    ]
+    "lib": ["esnext", "dom"],
+    "types": ["vite/client", "@types/jest", "cypress"]
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "jest.setup.js"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
