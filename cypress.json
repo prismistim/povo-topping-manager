@@ -1,0 +1,11 @@
+{
+  "baseUrl": "http://localhost:3000",
+  "integrationFolder": "e2e",
+  "pluginsFile": false,
+  "supportFile": false,
+  "video": false,
+  "component": {
+    "testFiles": "**/*.(test|spec).{js,ts,jsx,tsx}",
+    "componentFolder": "src"
+  }
+}
