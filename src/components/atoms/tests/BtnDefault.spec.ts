@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 import { render, fireEvent } from '@testing-library/vue'
-import BtnDefault from '../BtnDefault.vue'
+import BtnDefault from '/@/component/atoms/BtnDefault.vue'
 
 describe('test increment', () => {
   it('increment test', async () => {
