@@ -1,7 +1,7 @@
 <script setup lang="ts">
-interface Props {
-  toppingName?: string
-  purchasedDate?: string
+type Props = {
+  toppingName: string
+  purchasedDate: string
 }
 const props = withDefaults(defineProps<Props>(), {
   toppingName: 'fuga',
