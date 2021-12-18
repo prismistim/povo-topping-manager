@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto px-10 md:px-60">
-    <div class="mt-16 mb-10 text-center">
+    <div class="mt-16 mb-10 text-center text-gray-500 text-lg">
       <slot name="page-title" />
     </div>
     <div class="mb-10 border-b border-gray-400" />
