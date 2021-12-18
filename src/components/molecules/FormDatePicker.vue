@@ -166,3 +166,7 @@ const getSelectedDate = (date: number) => {
     </div>
   </div>
 </template>
+
+<style lang="postcss">
+@import '../../assets/index.css';
+</style>
