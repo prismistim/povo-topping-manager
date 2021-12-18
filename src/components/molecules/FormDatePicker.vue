@@ -40,11 +40,9 @@ const initialize = () => {
   selected.year = today.getFullYear()
   selected.month = today.getMonth()
 
-  selected.fullDate = new Date(
-    selected.year,
-    selected.month,
-    today.getDate()
-  ).toDateString()
+  selected.fullDate = new Date(selected.year, selected.month, today.getDate())
+    .toISOString()
+    .split('T')[0]
 }
 
 const generateDays = () => {
@@ -67,13 +65,29 @@ const generateDays = () => {
 }
 
 const getSelectedDate = (date: number) => {
-  selected.fullDate = new Date(
-    selected.year,
-    selected.month,
-    date
-  ).toDateString()
+  selected.fullDate = new Date(selected.year, selected.month, date)
+    .toISOString()
+    .split('T')[0]
 
   visible.value = false
+}
+
+const changeMonth = (type: string) => {
+  if (type === 'add') {
+    if (selected.month === 12) {
+      selected.year++
+      selected.month = 0
+    } else {
+      selected.month++
+    }
+  } else if (type === 'sub') {
+    if (selected.month === 0) {
+      selected.year--
+      selected.month = 11
+    } else {
+      selected.month--
+    }
+  }
 }
 </script>
 
@@ -103,7 +117,7 @@ const getSelectedDate = (date: number) => {
         <div>
           <button
             class="p-1 inline-flex hover:bg-gray-200 rounded-full cursor-pointer transition ease-in-out duration-100"
-            @click="selected.month--"
+            @click="changeMonth('sub')"
           >
             <svg
               class="h-6 w-6 text-gray-500 inline-flex"
@@ -121,7 +135,7 @@ const getSelectedDate = (date: number) => {
           </button>
           <button
             class="p-1 inline-flex hover:bg-gray-200 rounded-full cursor-pointer transition ease-in-out duration-100"
-            @click="selected.month++"
+            @click="changeMonth('add')"
           >
             <svg
               class="h-6 w-6 text-gray-500 inline-flex"
