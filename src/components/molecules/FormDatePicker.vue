@@ -139,24 +139,21 @@ const getSelectedDate = (date: number) => {
           </button>
         </div>
       </div>
-      <div class="flex flex-wrap -mx-1 mb-3">
+      <div class="grid grid-cols-7 flex-wrap mb-3">
         <div v-for="(day, index) in dayOfWeek" :key="index">
-          <div class="px-1" style="width: 14.26%">
+          <div class="px-2.5" style="width: 14.26%">
             <div class="text-xs text-center font-medium text-gray-800">
               {{ day }}
             </div>
           </div>
         </div>
       </div>
-      <div class="flex flex-wrap -mx-1 mb-3">
+      <div class="flex-wrap mb-3 grid grid-cols-7">
         <div v-for="(blankDay, index) in calendar.blankDays" :key="index">
-          <div
-            class="p-1 border border-transparent text-sm text-center"
-            style="width: 14.28%"
-          ></div>
+          <div class="border border-transparent text-sm text-center"></div>
         </div>
         <div v-for="date in calendar.days" :key="date">
-          <div class="mb-1 px-1" style="width: 14.28%">
+          <div class="mb-1">
             <div
               class="rounded-full cursor-pointer text-center text-sm leading-loose transition ease-in-out duration-100"
               @click="getSelectedDate(date)"
