@@ -10,7 +10,7 @@ import ToppingListHistory from '/@/components/organisms/home/ToppingListHistory.
     <template #page-title> povo-topping-manager </template>
     <template #content>
       <AddBtn />
-      <ToppingListHistory topping-name="hoge" purchased-date="2021-12" />
+      <ToppingListHistory topping-name="hoge" purchased-date="2021-12-23" />
     </template>
   </template-default>
 </template>
