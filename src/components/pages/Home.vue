@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import TemplateDefault from '/@/components/templates/TemplateDefault.vue'
-import BtnDefault from '/@/components/atoms/BtnDefault.vue'
 import AddBtn from '/@/components/organisms/home/AddBtn.vue'
 import ToppingListHistory from '/@/components/organisms/home/ToppingListHistory.vue'
 </script>
