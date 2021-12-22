@@ -9,6 +9,8 @@ RUN apk update && \
 RUN mkdir /app/node_modules && \
   chown -R node:node /app/node_modules
 
+ENV CYPRESS_CACHE_FOLDER=/home/node/.cache/Cypress
+
 COPY --chown=node:node package*.json /app/
 
 RUN cd /app && \
