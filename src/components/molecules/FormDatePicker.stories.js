@@ -16,4 +16,6 @@ const Template = (args) => ({
 })
 
 export const Primary = Template.bind({})
-Primary.args = {}
+Primary.args = {
+  value: '2021-01-01'
+}
