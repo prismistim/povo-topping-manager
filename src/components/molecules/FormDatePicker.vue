@@ -1,17 +1,37 @@
 <script setup lang="ts">
-import { onMounted, reactive, ref, watch } from 'vue'
+import { onMounted, reactive, ref, watch, computed } from 'vue'
 import FormInputDefault from '/@/components/atoms/FormInputDefault.vue'
+import FormLabel from '/@/components/atoms/FormLabel.vue'
+
+type Props = {
+  value: string
+}
 
 type Calendar = {
   days: number[]
   blankDays: number[]
 }
 
+type Emit = {
+  (e: 'update:value', value: string): void
+}
+
+const formatDate = (date: Date) => {
+  return `${date.getFullYear()}-${('00' + (date.getMonth() + 1)).slice(-2)}-${(
+    '00' + date.getDate()
+  ).slice(-2)}`
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  value: ''
+})
+
 const visible = ref(false)
 
 const selected = reactive({
   year: 2021,
   month: 12,
+  date: 1,
   fullDate: ''
 })
 
@@ -35,14 +55,19 @@ watch(
 )
 
 const initialize = () => {
-  const today = new Date()
+  let date = new Date()
 
-  selected.year = today.getFullYear()
-  selected.month = today.getMonth()
+  if (props.value !== '' && /\d{4}-[01]\d{2}-[0-3]{2}\d/.test(props.value)) {
+    date = new Date(props.value)
+  }
 
-  selected.fullDate = new Date(selected.year, selected.month, today.getDate())
-    .toISOString()
-    .split('T')[0]
+  selected.year = date.getFullYear()
+  selected.month = date.getMonth()
+  selected.date = date.getDate()
+
+  selected.fullDate = formatDate(
+    new Date(selected.year, selected.month, selected.date)
+  )
 }
 
 const generateDays = () => {
@@ -64,17 +89,22 @@ const generateDays = () => {
   calendar.days = days
 }
 
-const getSelectedDate = (date: number) => {
-  selected.fullDate = new Date(selected.year, selected.month, date)
-    .toISOString()
-    .split('T')[0]
+const isToday = (date: number) => {
+  const today = new Date()
+  const targetDate = new Date(selected.year, selected.month, date)
 
+  return today.toDateString() === targetDate.toDateString()
+}
+
+const getSelectedDate = (date: number) => {
+  selected.date = date
+  selected.fullDate = formatDate(new Date(selected.year, selected.month, date))
   visible.value = false
 }
 
 const changeMonth = (type: string) => {
   if (type === 'add') {
-    if (selected.month === 12) {
+    if (selected.month === 11) {
       selected.year++
       selected.month = 0
     } else {
@@ -89,15 +119,28 @@ const changeMonth = (type: string) => {
     }
   }
 }
+
+const closeDatePicker = () => {
+  visible.value = false
+}
+
+const emit = defineEmits<Emit>()
+
+const handleInput = ({ target }: { target: HTMLInputElement }) => {
+  emit('update:value', target.value)
+}
 </script>
 
 <template>
+  <FormLabel for="datepicker" text="日付を選択" />
   <div class="relative">
     <FormInputDefault
       :value="selected.fullDate"
       :type="'text'"
       placeholder="日付を選択"
+      readonly
       @click="visible = true"
+      @update:value="handleInput"
     />
     <div class="absolute top-0 right-0 px-3 py-2"></div>
     <div
@@ -169,7 +212,12 @@ const changeMonth = (type: string) => {
         <div v-for="date in calendar.days" :key="date">
           <div class="mb-1">
             <div
-              class="rounded-full cursor-pointer text-center text-sm leading-loose transition ease-in-out duration-100"
+              class="rounded-full cursor-pointer hover:bg-yellow-300 text-center text-sm leading-loose transition ease-in-out duration-100"
+              :class="{
+                'text-yellow-600 font-semibold': isToday(date),
+                'text-gray-700': !isToday(date),
+                'bg-yellow-100': date === selected.date
+              }"
               @click="getSelectedDate(date)"
             >
               {{ date }}
