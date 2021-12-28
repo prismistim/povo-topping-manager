@@ -96,6 +96,11 @@ const isToday = (date: number) => {
   return today.toDateString() === targetDate.toDateString()
 }
 
+const isSelectedDate = (date: number) => {
+  const targetDate = formatDate(new Date(selected.year, selected.month, date))
+  return targetDate === selected.fullDate
+}
+
 const getSelectedDate = (date: number) => {
   selected.date = date
   selected.fullDate = formatDate(new Date(selected.year, selected.month, date))
@@ -216,7 +221,7 @@ const handleInput = ({ target }: { target: HTMLInputElement }) => {
               :class="{
                 'text-yellow-600 font-semibold': isToday(date),
                 'text-gray-700': !isToday(date),
-                'bg-yellow-100': date === selected.date
+                'bg-yellow-100': isSelectedDate(date)
               }"
               @click="getSelectedDate(date)"
             >
