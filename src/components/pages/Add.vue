@@ -19,7 +19,7 @@ const selectOptions = [
     <template #page-title> 購入を登録する </template>
     <template #content>
       <FormDropdown :options="selectOptions"></FormDropdown>
-      <FormDatePicker></FormDatePicker>
+      <FormDatePicker text="購入日を選択してください"></FormDatePicker>
       <AddBtn />
     </template>
   </template-default>
