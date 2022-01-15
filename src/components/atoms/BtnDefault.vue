@@ -8,13 +8,15 @@ type Props = {
   color?: color
   fullRounded?: boolean
   widthFull?: boolean
+  to?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
   label: '',
   color: 'povo',
   fullRounded: false,
-  widthFull: false
+  widthFull: false,
+  to: ''
 })
 
 const componentClass = computed(() => {
@@ -32,7 +34,9 @@ const componentClass = computed(() => {
 </script>
 
 <template>
-  <button :class="componentClass">
-    {{ props.label }}
-  </button>
+  <router-link :to="props.to">
+    <button :class="componentClass">
+      {{ props.label }}
+    </button>
+  </router-link>
 </template>

@@ -52,6 +52,7 @@ const data: Props = {
           label="トップページへ戻る"
           :full-rounded="true"
           :width-full="true"
+          to="/"
         />
       </div>
     </template>
