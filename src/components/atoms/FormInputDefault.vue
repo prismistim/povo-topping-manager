@@ -3,6 +3,7 @@ type Props = {
   value: string
   type: 'text' | 'number' | 'email' | 'password'
   placeholder: string
+  readonly?: boolean
 }
 
 type Emit = {
@@ -12,7 +13,8 @@ type Emit = {
 const props = withDefaults(defineProps<Props>(), {
   value: '',
   type: 'text',
-  placeholder: ''
+  placeholder: '',
+  readonly: false
 })
 
 const emit = defineEmits<Emit>()
@@ -27,7 +29,8 @@ const handleInput = ({ target }: { target: HTMLInputElement }) => {
     :value="props.value"
     :placeholder="props.placeholder"
     :type="type"
-    class="px-2 py-1 border-2 rounded-md"
+    class="px-2 py-1 border-2 rounded-md w-full"
+    :readonly="props.readonly"
     @input="handleInput"
   />
 </template>
