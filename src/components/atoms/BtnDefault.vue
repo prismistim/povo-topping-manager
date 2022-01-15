@@ -1,31 +1,38 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
+import { color } from '/@/utils/color'
+import { getButtonColor } from '/@/utils/color'
 
-const count = ref(0)
+type Props = {
+  label: string
+  color?: color
+  fullRounded?: boolean
+  widthFull?: boolean
+}
 
-const props = defineProps({
-  title: {
-    type: String,
-    default: '',
-    required: true
-  }
+const props = withDefaults(defineProps<Props>(), {
+  label: '',
+  color: 'povo',
+  fullRounded: false,
+  widthFull: false
 })
 
-const increment = () => {
-  count.value++
-}
+const componentClass = computed(() => {
+  const base = [
+    'justify-center',
+    'items-center',
+    'p-2',
+    'font-mono',
+    props.fullRounded ? 'rounded-full' : 'rounded',
+    props.widthFull ? 'w-full' : 'w-auto',
+    getButtonColor(props.color)
+  ]
+  return base
+})
 </script>
 
 <template>
-  <span>count: {{ count }}</span>
-  <button
-    class="px-4 py-2 rounded-md bg-indigo-600 text-white"
-    @click="increment"
-  >
-    {{ props.title }}
+  <button :class="componentClass">
+    {{ props.label }}
   </button>
 </template>
-
-<style lang="postcss" scoped>
-@import '../../assets/index.css';
-</style>
