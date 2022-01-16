@@ -11,6 +11,10 @@ type Props = {
   to?: string
 }
 
+type Emit = {
+  (e: 'click'): void
+}
+
 const props = withDefaults(defineProps<Props>(), {
   label: '',
   color: 'povo',
@@ -18,6 +22,8 @@ const props = withDefaults(defineProps<Props>(), {
   widthFull: false,
   to: ''
 })
+
+const emit = defineEmits<Emit>()
 
 const componentClass = computed(() => {
   const base = [
@@ -31,11 +37,15 @@ const componentClass = computed(() => {
   ]
   return base
 })
+
+const handleClick = () => {
+  emit('click')
+}
 </script>
 
 <template>
   <router-link :to="props.to">
-    <button :class="componentClass">
+    <button :class="componentClass" @click="handleClick">
       {{ props.label }}
     </button>
   </router-link>
