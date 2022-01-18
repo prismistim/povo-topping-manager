@@ -1,23 +1,33 @@
 <script setup lang="ts">
 import { PropType } from 'vue'
 import FormLabelVue from '/@/components/atoms/FormLabel.vue'
-export type Props = {
+type Option = {
   key: number
   value: number
   label: string
 }
 const props = defineProps({
   options: {
-    type: Array as PropType<Props[]>,
+    type: Array as PropType<Option[]>,
     default: () => [],
+    required: false
+  },
+  text: {
+    type: String,
+    default: '',
     required: false
   }
 })
+
+// type Props = {
+//   value: string
+//   text: string
+// }
 </script>
 
 <template>
-  <FormLabelVue text="トッピング"></FormLabelVue>
-  <select id="" class="w-full px-2 py-1 mb-5 border-2 rounded-md" name="">
+  <FormLabelVue :text="props.text"></FormLabelVue>
+  <select class="w-full px-2 py-1 mb-5 border-2 rounded-md">
     <option
       v-for="option in props.options"
       :key="option.key ?? option"

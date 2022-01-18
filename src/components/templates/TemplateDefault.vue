@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps({
-  hasBackLogo: {
+  isTopPage: {
     type: Boolean,
     required: false,
     default: false
@@ -10,9 +10,9 @@ const props = defineProps({
 <template>
   <div class="container mx-auto px-10 md:px-60">
     <div class="mt-16 mb-10 text-center text-gray-500 text-xl">
-      <router-link v-if="props.hasBackLogo" to="/">
+      <router-link v-if="props.isTopPage" to="/">
         <svg
-          v-if="props.hasBackLogo"
+          v-if="props.isTopPage"
           class="stroke-current h-10 w-10 inline-block float-left stroke-2 cursor-pointer hover:text-gray-300"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"

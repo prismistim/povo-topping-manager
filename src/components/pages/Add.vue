@@ -18,8 +18,8 @@ const selectOptions = [
   <template-default :has-back-logo="true">
     <template #page-title> 購入を登録する </template>
     <template #content>
-      <FormDropdown :options="selectOptions"></FormDropdown>
-      <FormDatePicker text="購入日を選択してください"></FormDatePicker>
+      <FormDropdown :options="selectOptions" text="トッピング"></FormDropdown>
+      <FormDatePicker text="購入日"></FormDatePicker>
       <AddBtn :rounded="true"> </AddBtn>
     </template>
   </template-default>
