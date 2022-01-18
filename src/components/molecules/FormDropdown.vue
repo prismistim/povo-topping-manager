@@ -7,6 +7,7 @@ type Option = {
   value: number
   label: string
 }
+
 const props = defineProps({
   options: {
     type: Array as PropType<Option[]>,
