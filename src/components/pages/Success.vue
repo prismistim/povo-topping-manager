@@ -4,6 +4,7 @@ import FormLabel from '/@/components/atoms/FormLabel.vue'
 import FormInputDefault from '/@/components/atoms/FormInputDefault.vue'
 import BtnDefault from '/@/components/atoms/BtnDefault.vue'
 import moment from 'moment'
+import { reactive } from 'vue'
 
 type Props = {
   id: number
@@ -12,32 +13,41 @@ type Props = {
   remainingDays: number
 }
 
-type Params = {
-  [key: string]: string
+type Url = {
+  base: string
+  params: {
+    text: string
+    dates: string
+    [key: string]: string | undefined
+  }
 }
 
 const data: Props = {
   id: 2,
   toppingName: 'データ追加5GB（7日間）',
   purchasedDate: '2021-01-16',
-  remainingDays: 2
+  remainingDays: 7
 }
 
-let calendarUrl = 'https://www.google.com/calendar/render?action=TEMPLATE'
+const url: Url = reactive({
+  base: 'https://www.google.com/calendar/render?action=TEMPLATE',
+  params: {
+    text: '',
+    dates: ''
+  }
+})
 
-let params: Params = { text: '', dates: '' }
+const addToGoogleCalendar = (): void => {
+  url.params.text = 'povoのデータ期限日です'
 
-const addToGoogleCalendar = () => {
-  params.text = 'povoのデータ期限日です'
-
-  params.dates = moment(data.purchasedDate)
+  url.params.dates = moment(data.purchasedDate)
     .add(data.remainingDays, 'days')
     .format('YYYYMMDDTHHmmSSZ/YYYYMMDDTHHmmSSZ')
 
-  for (let i in params) {
-    calendarUrl += `&${i}=${params[i]}`
+  for (let i in url.params) {
+    url.base += `&${i}=${url.params[i]}`
   }
-  window.location.href = calendarUrl
+  window.location.href = url.base
 }
 </script>
 
@@ -51,7 +61,7 @@ const addToGoogleCalendar = () => {
           :value="data.toppingName"
           type="text"
           :readonly="true"
-          placeholder="選択されていません。"
+          placeholder="選択してください"
         />
       </div>
       <div class="mb-5">
@@ -60,7 +70,7 @@ const addToGoogleCalendar = () => {
           :value="data.purchasedDate"
           type="text"
           :readonly="true"
-          placeholder="選択されていません。"
+          placeholder="選択してください"
         />
       </div>
 
