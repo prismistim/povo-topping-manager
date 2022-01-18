@@ -2,7 +2,7 @@
 import TemplateDefault from '/@/components/templates/TemplateDefault.vue'
 import FormLabel from '/@/components/atoms/FormLabel.vue'
 import FormInputDefault from '/@/components/atoms/FormInputDefault.vue'
-import BtnDefault from '/@/components/atoms/BtnDefault.vue'
+import AddBtnDefault from '/@/components/atoms/AddBtnDefault.vue'
 import moment from 'moment'
 import { reactive } from 'vue'
 
@@ -78,7 +78,7 @@ const addToGoogleCalendar = (): void => {
         Googleカレンダーに登録する
       </div>
       <div class="text-center font-medium text-gray-600 mb-5">
-        <BtnDefault
+        <AddBtnDefault
           label="登録"
           :full-rounded="true"
           :width-full="true"
@@ -86,7 +86,7 @@ const addToGoogleCalendar = (): void => {
         />
       </div>
       <div class="text-center font-medium text-gray-600 mb-5">
-        <BtnDefault
+        <AddBtnDefault
           color="light"
           label="トップページへ戻る"
           :full-rounded="true"
