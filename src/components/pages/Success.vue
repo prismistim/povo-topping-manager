@@ -97,3 +97,6 @@ const addToGoogleCalendar = (): void => {
     </template>
   </template-default>
 </template>
+<style lang="postcss" scoped>
+@import '../../assets/index.css';
+</style>
