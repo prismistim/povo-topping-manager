@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { PropType } from 'vue'
 import FormLabelVue from '/@/components/atoms/FormLabel.vue'
+
 type Option = {
   key: number
   value: number
@@ -18,11 +19,6 @@ const props = defineProps({
     required: false
   }
 })
-
-// type Props = {
-//   value: string
-//   text: string
-// }
 </script>
 
 <template>
