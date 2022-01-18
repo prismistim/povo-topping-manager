@@ -15,7 +15,7 @@ const selectOptions = [
 </script>
 
 <template>
-  <template-default :has-back-logo="true">
+  <template-default :is-top-page="true">
     <template #page-title> 購入を登録する </template>
     <template #content>
       <FormDropdown :options="selectOptions" text="トッピング"></FormDropdown>
