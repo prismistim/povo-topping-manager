@@ -135,7 +135,7 @@ const handleInput = ({ target }: { target: HTMLInputElement }) => {
 
 <template>
   <FormLabel for="datepicker" :text="props.text" />
-  <div class="relative">
+  <div class="relative w-full">
     <FormInputDefault
       :value="selected.fullDate"
       :type="'text'"

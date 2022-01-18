@@ -17,7 +17,7 @@ const props = defineProps({
 
 <template>
   <FormLabelVue text="トッピング"></FormLabelVue>
-  <select id="" name="">
+  <select id="" class="w-full px-2 py-1 mb-5 border-2 rounded-md" name="">
     <option
       v-for="option in props.options"
       :key="option.key ?? option"
