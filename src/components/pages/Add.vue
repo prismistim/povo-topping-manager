@@ -2,7 +2,7 @@
 import TemplateDefault from '/@/components/templates/TemplateDefault.vue'
 import FormDropdown from '/@/components/molecules/FormDropdown.vue'
 import FormDatePicker from '/@/components/molecules/FormDatePicker.vue'
-import AddBtn from '/@/components/organisms/add/AddBtn.vue'
+import AddBtn from '/@/components/atoms/AddBtn.vue'
 
 const selectOptions = [
   { key: 1, value: 1, label: 'データ使い放題 (24時間）' },
@@ -20,7 +20,7 @@ const selectOptions = [
     <template #content>
       <FormDropdown :options="selectOptions"></FormDropdown>
       <FormDatePicker text="購入日を選択してください"></FormDatePicker>
-      <AddBtn />
+      <AddBtn :rounded="true"> </AddBtn>
     </template>
   </template-default>
 </template>
