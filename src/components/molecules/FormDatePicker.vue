@@ -5,6 +5,7 @@ import FormLabel from '/@/components/atoms/FormLabel.vue'
 
 type Props = {
   value: string
+  text: string
 }
 
 type Calendar = {
@@ -23,7 +24,8 @@ const formatDate = (date: Date) => {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  value: ''
+  value: '',
+  text: '日付を選択'
 })
 
 const visible = ref(false)
@@ -132,8 +134,8 @@ const handleInput = ({ target }: { target: HTMLInputElement }) => {
 </script>
 
 <template>
-  <FormLabel for="datepicker" text="日付を選択" />
-  <div class="relative">
+  <FormLabel for="datepicker" :text="props.text" />
+  <div class="relative w-full">
     <FormInputDefault
       :value="selected.fullDate"
       :type="'text'"

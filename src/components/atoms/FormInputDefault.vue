@@ -29,8 +29,8 @@ const handleInput = ({ target }: { target: HTMLInputElement }) => {
     :value="props.value"
     :placeholder="props.placeholder"
     :type="type"
-    class="px-2 py-1 border-2 rounded-md w-full"
     :readonly="props.readonly"
+    class="w-full px-2 py-1 mb-5 border-2 rounded-md"
     @input="handleInput"
   />
 </template>
