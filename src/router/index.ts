@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import Home from '/@/components/pages/Home.vue'
 import Add from '/@/components/pages/Add.vue'
+import Success from '/@/components/pages/Success.vue'
 import NotFound from '/@/components/pages/NotFound.vue'
 
 const routes = [
@@ -14,6 +15,11 @@ const routes = [
     path: '/add',
     name: 'Add',
     component: Add
+  },
+  {
+    path: '/success',
+    name: 'Success',
+    component: Success
   },
   {
     path: '/:pathMatch(.*)*',
