@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref, watch, computed } from 'vue'
 import FormInputDefault from '/@/components/atoms/FormInputDefault.vue'
-import FormLabel from '/@/components/atoms/FormLabel.vue'
 
 type Props = {
   value: string
-  text: string
 }
 
 type Calendar = {
@@ -24,8 +22,7 @@ const formatDate = (date: Date) => {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  value: '',
-  text: '日付を選択'
+  value: ''
 })
 
 const visible = ref(false)
@@ -134,7 +131,6 @@ const handleInput = ({ target }: { target: HTMLInputElement }) => {
 </script>
 
 <template>
-  <FormLabel for="datepicker" :text="props.text" />
   <div class="relative w-full">
     <FormInputDefault
       :value="selected.fullDate"
