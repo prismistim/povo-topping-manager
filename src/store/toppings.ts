@@ -19,7 +19,7 @@ export const toppingStore = defineStore('toppings', {
       return (): ToppingType => {
         if (state.toppings.length === 0)
           throw new Error('トッピングがありません。')
-        const topping = state.toppings[state.toppings.length - 1]
+        const topping = state.toppings[state.toppings.length]
         return topping
       }
     }
