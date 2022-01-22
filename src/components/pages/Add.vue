@@ -14,7 +14,7 @@ const selectOptions = [
   { key: 6, value: 180, label: 'データ追加150GB（180日間）' }
 ]
 
-const date = ref('2021-01-01')
+const date = ref('')
 </script>
 
 <template>
