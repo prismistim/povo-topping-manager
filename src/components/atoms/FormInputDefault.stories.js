@@ -2,7 +2,15 @@ import FormInputDefault from './FormInputDefault.vue'
 
 export default {
   title: 'FormInputDefault',
-  component: FormInputDefault
+  component: FormInputDefault,
+  argTypes: {
+    type: {
+      control: {
+        type: 'select'
+      },
+      options: ['text', 'number', 'email', 'password']
+    }
+  }
 }
 
 const Template = (args) => ({
@@ -17,7 +25,7 @@ const Template = (args) => ({
 
 export const Primary = Template.bind({})
 Primary.args = {
-  value: '',
+  modelValue: '',
   type: 'text',
   placeholder: ''
 }

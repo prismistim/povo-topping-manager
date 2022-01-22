@@ -3,7 +3,7 @@ import { onMounted, reactive, ref, watch, computed } from 'vue'
 import FormInputDefault from '/@/components/atoms/FormInputDefault.vue'
 
 type Props = {
-  value: string
+  modelValue: string
 }
 
 type Calendar = {
@@ -12,18 +12,21 @@ type Calendar = {
 }
 
 type Emit = {
-  (e: 'update:value', value: string): void
+  (e: 'update:modelValue', value: string): void
 }
+
+const props = withDefaults(defineProps<Props>(), {
+  modelValue: '',
+  text: '日付を選択'
+})
+
+const emit = defineEmits<Emit>()
 
 const formatDate = (date: Date) => {
   return `${date.getFullYear()}-${('00' + (date.getMonth() + 1)).slice(-2)}-${(
     '00' + date.getDate()
   ).slice(-2)}`
 }
-
-const props = withDefaults(defineProps<Props>(), {
-  value: ''
-})
 
 const visible = ref(false)
 
@@ -56,8 +59,13 @@ watch(
 const initialize = () => {
   let date = new Date()
 
-  if (props.value !== '' && /\d{4}-[01]\d{2}-[0-3]{2}\d/.test(props.value)) {
-    date = new Date(props.value)
+  console.log(props.modelValue)
+
+  if (
+    props.modelValue !== '' &&
+    /\d{4}-[01]\d-[0-3]\d/.test(props.modelValue)
+  ) {
+    date = new Date(props.modelValue)
   }
 
   selected.year = date.getFullYear()
@@ -99,6 +107,7 @@ const getSelectedDate = (date: number) => {
   selected.date = date
   selected.fullDate = formatDate(new Date(selected.year, selected.month, date))
   visible.value = false
+  emit('update:modelValue', selected.fullDate)
 }
 
 const changeMonth = (type: string) => {
@@ -118,27 +127,16 @@ const changeMonth = (type: string) => {
     }
   }
 }
-
-const closeDatePicker = () => {
-  visible.value = false
-}
-
-const emit = defineEmits<Emit>()
-
-const handleInput = ({ target }: { target: HTMLInputElement }) => {
-  emit('update:value', target.value)
-}
 </script>
 
 <template>
   <div class="relative w-full">
     <FormInputDefault
-      :value="selected.fullDate"
+      v-model="selected.fullDate"
       :type="'text'"
       placeholder="日付を選択"
       readonly
       @click="visible = true"
-      @update:value="handleInput"
     />
     <div class="absolute top-0 right-0 px-3 py-2"></div>
     <div

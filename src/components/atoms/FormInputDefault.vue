@@ -1,17 +1,17 @@
 <script setup lang="ts">
 type Props = {
-  value: string
+  modelValue: string
   type: 'text' | 'number' | 'email' | 'password'
   placeholder: string
   readonly?: boolean
 }
 
 type Emit = {
-  (e: 'update:value', value: string): void
+  (e: 'update:modelValue', value: string): void
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  value: '',
+  modelValue: '',
   type: 'text',
   placeholder: '',
   readonly: false
@@ -20,13 +20,13 @@ const props = withDefaults(defineProps<Props>(), {
 const emit = defineEmits<Emit>()
 
 const handleInput = ({ target }: { target: HTMLInputElement }) => {
-  emit('update:value', target.value)
+  emit('update:modelValue', target.value)
 }
 </script>
 
 <template>
   <input
-    :value="props.value"
+    :value="props.modelValue"
     :placeholder="props.placeholder"
     :type="type"
     :readonly="props.readonly"

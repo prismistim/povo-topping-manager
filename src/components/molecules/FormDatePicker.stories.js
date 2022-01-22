@@ -17,5 +17,6 @@ const Template = (args) => ({
 
 export const Primary = Template.bind({})
 Primary.args = {
-  value: '2021-01-01'
+  modelValue: '2021-01-01',
+  text: '日付を選択'
 }
