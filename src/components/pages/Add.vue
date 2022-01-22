@@ -8,9 +8,10 @@ import AddBtnDefault from '/@/components/atoms/AddBtnDefault.vue'
 import { toppingStore } from '/@/store/toppings'
 import { reactive } from 'vue'
 import OPTIONS from '/@/constants/options'
+import { useRouter } from 'vue-router'
 
-// toppingStoreを呼び出すだけで、グローバルストアへのアクセスが可能
 const store = toppingStore()
+const router = useRouter()
 
 const data = reactive({
   selected: OPTIONS[0],
@@ -18,11 +19,12 @@ const data = reactive({
 })
 
 const handleClink = () => {
-  store.addTopping(
+  const id = store.addTopping(
     data.selected.label,
     data.selectedDate,
     data.selected.remainingDays
   )
+  router.push(`/success/${id}`)
 }
 </script>
 

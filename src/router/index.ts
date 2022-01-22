@@ -17,7 +17,7 @@ const routes = [
     component: Add
   },
   {
-    path: '/success',
+    path: '/success/:id',
     name: 'Success',
     component: Success
   },

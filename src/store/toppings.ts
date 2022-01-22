@@ -10,18 +10,7 @@ type ToppingType = {
 export const toppingStore = defineStore('toppings', {
   state: () => {
     return {
-      toppings: [] as ToppingType[],
-      nextId: 0
-    }
-  },
-  getters: {
-    findLatestTopping(state) {
-      return (): ToppingType => {
-        if (state.toppings.length === 0)
-          throw new Error('トッピングがありません。')
-        const topping = state.toppings[state.toppings.length]
-        return topping
-      }
+      toppings: [] as ToppingType[]
     }
   },
   actions: {
@@ -29,13 +18,24 @@ export const toppingStore = defineStore('toppings', {
       toppingName: string,
       purchasedDate: string,
       remainingDays: number
-    ) {
+    ): number {
+      const id = this.toppings.length + 1
       this.toppings.push({
-        id: this.nextId++,
+        id: id,
         toppingName,
         purchasedDate,
         remainingDays
       })
+      return id
+    },
+    findTopping(id: number) {
+      const topping = this.toppings.find((v) => v.id == id)
+      if (!topping) throw new Error('トッピングがありません。')
+      return topping
+    },
+    persist: {
+      enabled: true,
+      strategies: [{ storage: localStorage }]
     }
   }
 })
