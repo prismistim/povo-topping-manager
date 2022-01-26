@@ -13,6 +13,10 @@ export const toppingStore = defineStore('toppings', {
       toppings: [] as ToppingType[]
     }
   },
+  persist: {
+    enabled: true,
+    strategies: [{ storage: localStorage }]
+  },
   actions: {
     addTopping(
       toppingName: string,
@@ -32,10 +36,6 @@ export const toppingStore = defineStore('toppings', {
       const topping = this.toppings.find((v) => v.id == id)
       if (!topping) throw new Error('トッピングがありません。')
       return topping
-    },
-    persist: {
-      enabled: true,
-      strategies: [{ storage: localStorage }]
     }
   }
 })
