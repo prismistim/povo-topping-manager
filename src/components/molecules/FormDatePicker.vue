@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { onMounted, reactive, ref, watch, computed } from 'vue'
 import FormInputDefault from '/@/components/atoms/FormInputDefault.vue'
-import FormLabel from '/@/components/atoms/FormLabel.vue'
 
 type Props = {
   modelValue: string
-  text: string
 }
 
 type Calendar = {
@@ -132,7 +130,6 @@ const changeMonth = (type: string) => {
 </script>
 
 <template>
-  <FormLabel for="datepicker" :text="props.text" />
   <div class="relative w-full">
     <FormInputDefault
       v-model="selected.fullDate"
