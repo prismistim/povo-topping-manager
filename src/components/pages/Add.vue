@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, reactive } from 'vue'
+import moment from 'moment'
+import { useRouter } from 'vue-router'
+import { toppingStore } from '/@/store/toppings'
 import TemplateDefault from '/@/components/templates/TemplateDefault.vue'
 import FormDropdown from '/@/components/molecules/FormDropdown.vue'
 import FormLabel from '/@/components/atoms/FormLabel.vue'
 import FormDatePicker from '/@/components/molecules/FormDatePicker.vue'
 import AddBtnDefault from '/@/components/atoms/AddBtnDefault.vue'
-import { toppingStore } from '/@/store/toppings'
-import { reactive } from 'vue'
 import OPTIONS from '/@/constants/options'
-import { useRouter } from 'vue-router'
-import moment from 'moment'
 
 const store = toppingStore()
 const router = useRouter()
@@ -38,9 +37,9 @@ const handleClink = () => {
     <template #page-title> 購入を登録する </template>
     <template #content>
       <FormLabel text="トッピング" />
-      <FormDropdown v-model="data.selected" :options="OPTIONS"></FormDropdown>
+      <FormDropdown v-model="data.selected" :options="OPTIONS" />
       <FormLabel text="購入日" />
-      <FormDatePicker v-model="data.selectedDate"></FormDatePicker>
+      <FormDatePicker v-model="data.selectedDate" />
       <AddBtnDefault
         label="登録"
         :full-rounded="true"

@@ -18,7 +18,20 @@
   },
   "plugins": ["vue", "@typescript-eslint"],
   "rules": {
-    "indent": ["error", 2]
+    "indent": ["error", 2],
+    "vue/html-self-closing": [
+      "error",
+      {
+        "html": {
+          "void": "never",
+          "normal": "never",
+          "component": "always"
+        },
+        "svg": "always",
+        "math": "always"
+      }
+    ],
+    "curly": "error"
   },
   "ignorePatterns": ["**/dist/**/*.js", "./node_modules/**"]
 }

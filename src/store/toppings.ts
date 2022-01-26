@@ -33,7 +33,9 @@ export const toppingStore = defineStore('toppings', {
     },
     findTopping(id: number): savedData {
       const topping = this.toppings.find((v) => v.id == id)
-      if (!topping) throw new Error('トッピングがありません。')
+      if (!topping) {
+        throw new Error('トッピングがありません。')
+      }
       return topping
     }
   }
