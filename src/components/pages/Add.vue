@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted } from 'vue'
 import TemplateDefault from '/@/components/templates/TemplateDefault.vue'
 import FormDropdown from '/@/components/molecules/FormDropdown.vue'
 import FormLabel from '/@/components/atoms/FormLabel.vue'
@@ -9,6 +9,7 @@ import { toppingStore } from '/@/store/toppings'
 import { reactive } from 'vue'
 import OPTIONS from '/@/constants/options'
 import { useRouter } from 'vue-router'
+import moment from 'moment'
 
 const store = toppingStore()
 const router = useRouter()
@@ -16,6 +17,10 @@ const router = useRouter()
 const data = reactive({
   selected: OPTIONS[0],
   selectedDate: ''
+})
+
+onMounted(() => {
+  data.selectedDate = moment().format('YYYY-MM-DD')
 })
 
 const handleClink = () => {

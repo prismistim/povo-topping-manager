@@ -4,7 +4,7 @@ import FormLabel from '/@/components/atoms/FormLabel.vue'
 import FormInputDefault from '/@/components/atoms/FormInputDefault.vue'
 import AddBtnDefault from '/@/components/atoms/AddBtnDefault.vue'
 import moment from 'moment'
-import { reactive } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { toppingStore } from '/@/store/toppings'
 import { useRoute } from 'vue-router'
 
@@ -20,7 +20,19 @@ type Url = {
 const store = toppingStore()
 const route = useRoute()
 
-const data = store.findTopping(Number(route.params.id))
+const data = ref({
+  id: 0,
+  toppingName: '',
+  purchasedDate: '',
+  remainingDays: 0
+})
+onMounted(() => {
+  try {
+    data.value = store.findTopping(Number(route.params.id))
+  } catch (e) {
+    console.log(e)
+  }
+})
 
 const url: Url = reactive({
   base: 'https://www.google.com/calendar/render?action=TEMPLATE',
@@ -33,8 +45,8 @@ const url: Url = reactive({
 const addToGoogleCalendar = (): void => {
   url.params.text = 'povoのデータ期限日です'
 
-  url.params.dates = moment(data.purchasedDate)
-    .add(data.remainingDays, 'days')
+  url.params.dates = moment(data.value.purchasedDate)
+    .add(data.value.remainingDays, 'days')
     .format('YYYYMMDDTHHmmSSZ/YYYYMMDDTHHmmSSZ')
 
   for (let i in url.params) {

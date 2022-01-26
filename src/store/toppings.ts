@@ -28,7 +28,7 @@ export const toppingStore = defineStore('toppings', {
       })
       return id
     },
-    findTopping(id: number) {
+    findTopping(id: number): ToppingType {
       const topping = this.toppings.find((v) => v.id == id)
       if (!topping) throw new Error('トッピングがありません。')
       return topping
