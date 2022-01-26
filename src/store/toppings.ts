@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia'
-import { savedData } from '/@/types/topping'
+import { SavedData } from '/@/types/topping'
 
 export const toppingStore = defineStore('toppings', {
   state: () => {
     return {
-      toppings: [] as Array<savedData>
+      toppings: [] as Array<SavedData>
     }
   },
   persist: {
@@ -31,7 +31,7 @@ export const toppingStore = defineStore('toppings', {
       })
       return id
     },
-    findTopping(id: number): savedData {
+    findTopping(id: number): SavedData {
       const topping = this.toppings.find((v) => v.id == id)
       if (!topping) {
         throw new Error('トッピングがありません。')

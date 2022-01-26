@@ -1,10 +1,10 @@
-export type toppingType = {
+export type ToppingType = {
   key: number
   label: string
   remainingDays: number
 }
 
-export type savedData = {
+export type SavedData = {
   id: number
   toppingName: string
   purchasedDate: string

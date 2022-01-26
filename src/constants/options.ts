@@ -1,6 +1,6 @@
-import { toppingType } from '/@/types/topping'
+import { ToppingType } from '/@/types/topping'
 
-const OPTIONS: toppingType[] = [
+const OPTIONS: ToppingType[] = [
   { key: 1, label: 'データ使い放題 (24時間）', remainingDays: 1 },
   { key: 2, label: 'データ追加1GB（7日間）', remainingDays: 7 },
   { key: 3, label: 'データ追加3GB（30日間）', remainingDays: 30 },
